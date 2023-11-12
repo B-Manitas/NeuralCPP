@@ -1,3 +1,4 @@
 [submodule "lib/CDataFrame"]
 	path = lib/CDataFrame
-	url = https://github.com/b-manitas/CDataFrame
+	url = https://github.com/B-Manitas/CDataFrame.git
+	branch = main
