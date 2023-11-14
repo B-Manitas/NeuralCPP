@@ -1,12 +1,12 @@
 # Compiler, flags, and libraries
 CC = g++
-CFLAGS = -std=c++11 -Wall -fopenmp -I./include -I./test
+CFLAGS = -std=c++11 -Wall -fopenmp
 LIBS_TEST = -lgtest -lpthread
 
 # Files
-SRC = $(wildcard ./src/*.cpp)
+SRC = $(wildcard ./src/*.cpp) $(wildcard ./src/*/*.cpp)
 OBJ = $(SRC:.cpp=.o)
-EXE = NeuralCPP
+EXE = $(SRC:.cpp=)
 
 # Main file
 MAIN = $(wildcard main.cpp)
@@ -27,7 +27,7 @@ test : $(TEST_OBJ)
 	$(CC) $(CFLAGS) $^ $(LIBS_TEST) -o $(TEST_EXE)
 	./$(TEST_EXE)
 
-main : $(MAIN_OBJ)
+main : $(MAIN_OBJ) $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	./$@
 
@@ -44,7 +44,7 @@ docs :
 	cd docs/latex 
 	make pdf
 	cd ../..
-	mv docs/latex/refman.pdf docs/cdataframe.pdf
+	mv docs/latex/refman.pdf docs/neuralcpp.pdf
 	clear
 
 clean : clean_obj clean_exe
