@@ -14,9 +14,9 @@
 #include "../include/NeuralLoss.hpp"
 
 // ==================================================
-// LOSS FUNCTIONS
+// CHECKS
 
-float NeuralLoss::mse(const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
+void NeuralLoss::__check_valid_y(const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
 {
     // Check if the true values matrix is of the right size
     if (y_true.width() != 1)
@@ -25,6 +25,22 @@ float NeuralLoss::mse(const cmatrix<float> &y_true, const cmatrix<float> &y_pred
     // Check if the predicted values matrix is of the right size
     if (y_true.height() != y_pred.height())
         throw std::invalid_argument("The prediction values matrix must be of size y_pred.height()x1");
+}
+
+void NeuralLoss::__check_valid_X(const cmatrix<float> &X, const size_t &height)
+{
+    // Check if the samples matrix is of the right size
+    if (X.height() != height)
+        throw std::invalid_argument("The samples matrix must be of size y_pred.height()xX.width()");
+}
+
+// ==================================================
+// LOSS FUNCTIONS
+
+float NeuralLoss::mse(const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
+{
+    // Check if arguments are valid
+    __check_valid_y(y_true, y_pred);
 
     // Compute the mean squared error
     // MSE: 1/n * sum((y_pred - y_true)^2)
@@ -36,13 +52,9 @@ float NeuralLoss::mse(const cmatrix<float> &y_true, const cmatrix<float> &y_pred
 
 cmatrix<float> NeuralLoss::mse_grad(const cmatrix<float> &X, const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
 {
-    // Check if the true values matrix is of the right size
-    if (y_true.width() != 1)
-        throw std::invalid_argument("The true values matrix must be of size y_true.height()x1");
-
-    // Check if the predicted values matrix is of the right size
-    if (y_true.height() != y_pred.height())
-        throw std::invalid_argument("The prediction values matrix must be of size y_pred.height()x1");
+    // Check if arguments are valid
+    __check_valid_y(y_true, y_pred);
+    __check_valid_X(X, y_pred.height());
 
     // Compute the mean squared error gradient
     // Grad (w): 1/(2n) * X^T * (X * w - y) => 1/(2n) * X^T * (y_pred - y_true) considering y_pred = X * w

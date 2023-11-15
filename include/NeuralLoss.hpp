@@ -21,11 +21,33 @@
 
 /**
  * @brief This class is used to compute the loss and associated gradients.
- * 
- * @see Visit https://en.wikipedia.org/wiki/Loss_function for more information. 
+ *
+ * @see Visit https://en.wikipedia.org/wiki/Loss_function for more information.
  */
 class NeuralLoss
 {
+private:
+    // CHECKS
+    /**
+     * @brief Check if the true values matrix is of size y_pred.height()x1 and if the predicted values matrix is of size y_pred.height()x1.
+     *
+     * @param y_true The true values.
+     * @param y_pred The predicted values.
+     *
+     * @throw std::invalid_argument If the true values matrix is not of size y_pred.height()x1.
+     * @throw std::invalid_argument If the predicted values matrix is not of size y_pred.height()x1.
+     */
+    static void __check_valid_y(const cmatrix<float> &y_true, const cmatrix<float> &y_pred);
+    /**
+     * @brief Check if the samples matrix is of size y_pred.height()xX.width().
+     *
+     * @param X The samples matrix.
+     * @param height The height of the predicted values matrix.
+     *
+     * @throw std::invalid_argument If the samples matrix is not of size y_pred.height()xX.width().
+     */
+    static void __check_valid_X(const cmatrix<float> &X, const size_t &height);
+
 public:
     // LOSS FUNCTIONS
     /**
@@ -61,7 +83,6 @@ public:
     static float mae(const cmatrix<float> &y_true, const cmatrix<float> &y_pred);
 
     // LOSS GRADIENTS
-
     /**
      * @brief Compute the mean squared error gradient.
      *
