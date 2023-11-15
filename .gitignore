@@ -1,5 +1,6 @@
 # Ignore specific files
 main.cpp
+main.py
 
 # Ignore specific folders
 .vscode
