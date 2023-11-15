@@ -1,4 +1,7 @@
-.vscode
+# Ignore specific files
 main.cpp
+
+# Ignore specific folders
+.vscode
 data
-*.o
+build
