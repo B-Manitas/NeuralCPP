@@ -78,7 +78,6 @@ public:
      * @note The MAE is computed as follows: 1/n * sum(|y_pred - y_true|).
      *
      * @see Visit https://en.wikipedia.org/wiki/Mean_absolute_error for more information.
-     * @warning NOT IMPLEMENTED YET.
      */
     static float mae(const cmatrix<float> &y_true, const cmatrix<float> &y_pred);
 
@@ -109,7 +108,6 @@ public:
      * @throw std::invalid_argument If the predicted values matrix is not of size y_pred.height()x1.
      *
      * @note The MAE gradient is computed as follows: 1/n * X^T * sign(y_pred - y_true) considering y_pred = X * w.
-     * @warning NOT IMPLEMENTED YET.
      */
     static cmatrix<float> mae_grad(const cmatrix<float> &X, const cmatrix<float> &y_true, const cmatrix<float> &y_pred);
 };

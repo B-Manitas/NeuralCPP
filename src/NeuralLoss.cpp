@@ -47,6 +47,16 @@ float NeuralLoss::mse(const cmatrix<float> &y_true, const cmatrix<float> &y_pred
     return 1 / float(y_true.height()) * ((y_pred - y_true) ^ 2).sum_all();
 }
 
+float NeuralLoss::mae(const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
+{
+    // Check if arguments are valid
+    __check_valid_y(y_true, y_pred);
+
+    // Compute the mean absolute error
+    // MAE: 1/n * sum(|y_pred - y_true|)
+    return 1 / float(y_true.height()) * (y_pred - y_true).abs().sum_all();
+}
+
 // ==================================================
 // LOSS GRADIENTS
 
@@ -59,4 +69,15 @@ cmatrix<float> NeuralLoss::mse_grad(const cmatrix<float> &X, const cmatrix<float
     // Compute the mean squared error gradient
     // Grad (w): 1/(2n) * X^T * (X * w - y) => 1/(2n) * X^T * (y_pred - y_true) considering y_pred = X * w
     return 1 / (2 * (float)X.height()) * X.transpose().matmul(y_pred - y_true);
+}
+
+cmatrix<float> NeuralLoss::mae_grad(const cmatrix<float> &X, const cmatrix<float> &y_true, const cmatrix<float> &y_pred)
+{
+    // Check if arguments are valid
+    __check_valid_y(y_true, y_pred);
+    __check_valid_X(X, y_pred.height());
+
+    // Compute the mean absolute error gradient
+    // Grad (w): 2/n * (W * w - y) * X => 2/n * (y_pred - y_true) * X considering y_pred = X * w
+    return 2 / (float)X.height() * (y_pred - y_true).matmul(X);
 }

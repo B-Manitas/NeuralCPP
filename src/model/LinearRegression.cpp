@@ -61,8 +61,7 @@ cmatrix<float> LinearRegression::fit(const cmatrix<float> &X, const cmatrix<floa
         f_loss = NeuralLoss::mse, f_loss_grad = NeuralLoss::mse_grad;
 
     else if (m_loss_function == "mae")
-        throw std::invalid_argument("The loss function 'mae' is not yet implemented");
-        // f_loss = NeuralLoss::mae, f_loss_grad = NeuralLoss::mae_grad;
+        f_loss = NeuralLoss::mae, f_loss_grad = NeuralLoss::mae_grad;
 
     else
         throw std::invalid_argument("The loss function must be either 'mse' or 'mae'");
