@@ -1,10 +1,10 @@
 /**
- * @defgroup Perceptron Perceptron
- * @file Perceptron.hpp
- * @see src/model/Perceptron.cpp for implementation.
- * @brief The Perceptron class.
+ * @defgroup NeuralPerceptron NeuralPerceptron
+ * @file NeuralPerceptron.hpp
+ * @see src/model/NeuralPerceptron.cpp for implementation.
+ * @brief The NeuralPerceptron class.
  *
- * This file defines the Perceptron class, which is used to fit a model to a dataset.
+ * This file defines the NeuralPerceptron class, which is used to fit a model to a dataset.
  *
  * @see Visit https://en.wikipedia.org/wiki/Perceptron for more information.
  *
@@ -24,7 +24,7 @@
  *
  * @see Visit https://en.wikipedia.org/wiki/Perceptron for more information.
  */
-class Perceptron
+class NeuralPerceptron
 {
 private:
     // STATIC METHODS

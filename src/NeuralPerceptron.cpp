@@ -1,9 +1,9 @@
 /**
- * @file Perceptron.cpp
- * @see src/Perceptron.hpp for definition.
- * @brief The Perceptron class.
+ * @file NeuralPerceptron.cpp
+ * @see src/NeuralPerceptron.hpp for definition.
+ * @brief The NeuralPerceptron class.
  *
- * This file contains the implementation of the Perceptron class.
+ * This file contains the implementation of the NeuralPerceptron class.
  *
  * @author Manitas Bahri <https://github.com/B-Manitas>
  * @date 2023/11
@@ -16,7 +16,7 @@
 // ==================================================
 // PRIVATE METHODS
 
-cmatrix<float> Perceptron::__augment_X(const cmatrix<float> &X) const
+cmatrix<float> NeuralPerceptron::__augment_X(const cmatrix<float> &X) const
 {
     return cmatrix<float>::merge(X, cmatrix<float>(X.height(), 1, 1), 1);
 }
@@ -24,7 +24,7 @@ cmatrix<float> Perceptron::__augment_X(const cmatrix<float> &X) const
 // ==================================================
 // METHODS
 
-cmatrix<float> Perceptron::fit(const cmatrix<float> &X, const cmatrix<float> &y_true, const int &epochs, const float &learning_rate)
+cmatrix<float> NeuralPerceptron::fit(const cmatrix<float> &X, const cmatrix<float> &y_true, const int &epochs, const float &learning_rate)
 {
     // Check if the number of epochs is valid
     if (epochs <= 0)
@@ -65,7 +65,7 @@ cmatrix<float> Perceptron::fit(const cmatrix<float> &X, const cmatrix<float> &y_
     return m_weights;
 }
 
-cmatrix<float> Perceptron::predict(const cmatrix<float> &X) const
+cmatrix<float> NeuralPerceptron::predict(const cmatrix<float> &X) const
 {
     // Check if the model is trained
     if (m_weights.is_empty())
