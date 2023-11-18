@@ -5,7 +5,7 @@
  *
  * This file contains the implementation of the NeuralLoss class.
  *
- * @author Manitas Bahri <htpps://github.com/B-Manitas>
+ * @author Manitas Bahri <https://github.com/B-Manitas>
  * @date 2023/11
  * @license MIT License
  */
