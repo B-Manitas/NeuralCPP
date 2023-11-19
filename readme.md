@@ -42,9 +42,8 @@ NeuralCPP is structured as follows:
 | **include**                                                  |                                                         |
 | [`NeuralCPP.hpp`](include/NeuralCPP.hpp)                     | Includes all the other headers.                         |
 | [`NeuralLoss.hpp`](include/NeuralLoss.hpp)                   | Defines the loss functions.                             |
-| **include\\** model                                          |                                                         |
-| [`NeuralModel.hpp`](include/model/NeuralModel.hpp)           | It is the abstract class that all models inherit from.  |
-| [`LinearRegression.hpp`](include/model/LinearRegression.hpp) | The class that implements the linear regression model.  |
+| [`NeuralActivation.hpp`](include/model/LinearRegression.hpp) | Defines the activation functions.                       |
+| [`NeuralPerceptron.hpp`](include/model/NeuralModel.hpp)      | The Perceptron model.                                   |
 | **src**                                                      |                                                         |
 |                                                              | This folder contains the implementation of the library. |
 
@@ -57,6 +56,7 @@ For detailed information on how to use CMatrix, consult the [documentation](docs
 - [CMatrix](https://github.com/B-Manitas/CMatrix): A C++ library for matrix operations. _(Required for compile CMatrix)_
 - [OpenMP](https://www.openmp.org/): An API for parallel programming. _(Required for compile CMatrix)_
 - [Doxygen](https://www.doxygen.nl): A documentation generator.
+- [Matplot++](https://github.com/alandefreitas/matplotplusplus): A C++ Graphics Library for Data Visualization.
 
 ## See Also
 
