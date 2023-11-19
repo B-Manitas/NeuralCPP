@@ -13,8 +13,8 @@
  * @license MIT License
  */
 
-#ifndef PERCEPTRON_HPP
-#define PERCEPTRON_HPP
+#ifndef NEURALPERCEPTRON_HPP
+#define NEURALPERCEPTRON_HPP
 
 // INCLUDES
 #include "NeuralActivation.hpp"
@@ -83,4 +83,4 @@ public:
     cmatrix<float> predict(const cmatrix<float> &X) const;
 };
 
-#endif // PERCEPTRON_HPP
+#endif // NEURALPERCEPTRON_HPP
