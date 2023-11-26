@@ -32,7 +32,7 @@ cmatrix<float> NeuralPerceptron::fit(const cmatrix<float> &X, const cmatrix<floa
 
     // Check if all the labels are either 1 or -1
     if (y_true.find([&](float x)
-                    { return x != 1 && x != -1; }) != std::tuple<size_t, size_t>(-1, -1))
+                    { return x != 1 && x != -1; }) != std::pair<int, int>(-1, -1))
         throw std::invalid_argument("The labels must be either 1 or -1");
 
     // Augment the samples matrix with a column of ones for the bias
