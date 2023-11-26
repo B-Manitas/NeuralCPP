@@ -142,7 +142,7 @@ NeuralLayers::~NeuralLayers() {}
 void NeuralLayers::fit(const cmatrix<float> &X, const cmatrix<float> &y, const int &epochs, const float &learning_rate, const int &verbose)
 {
     // Initialize the weights (+1 for the bias)
-    __init_weights(X.height() + 1, m_layers_dims, y.height()); // OK
+    __init_weights(X.height() + 1, m_layers_dims, y.height());
 
     // TODO: Multiclassification
     const cmatrix<cbool> y_true = cmatrix<cbool>(y);
@@ -150,7 +150,7 @@ void NeuralLayers::fit(const cmatrix<float> &X, const cmatrix<float> &y, const i
     // Train the model
     for (int i = 0; i < epochs; i++)
     {
-        __forward_propagation(X); // OK
+        __forward_propagation(X);
         __back_propagation(y);
         __gradient_descent(learning_rate);
 

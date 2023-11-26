@@ -8,11 +8,12 @@ NeuralCPP is a Neural Network Library written in C++. It offers a simple API to 
 ## Table of Contents
 
 1. [Installation](#installation)
-2. [Hierarchical Structure](#hierarchical-structure)
-3. [Documentation](#documentation)
-4. [Libraries Used](#libraries-used)
-5. [See Also](#see-also)
-6. [License](#license)
+2. [Example](#example)
+3. [Hierarchical Structure](#hierarchical-structure)
+4. [Documentation](#documentation)
+5. [Libraries Used](#libraries-used)
+6. [See Also](#see-also)
+7. [License](#license)
 
 ## Installation
 
@@ -31,6 +32,30 @@ git submodule update --init --recursive
 
 ```bash
 -std=c++11 -fopenmp
+```
+
+## Example
+
+```cpp
+#include "include/NeuralCPP.hpp"
+
+int main()
+{
+    // Create the dataset
+    cmatrix<float> X, y;
+    NeuralCPP::create_dataset(X, y, 100000, 2, 2);
+
+    // Create the neural network model (2 hidden layers with 32 neurons each)
+    NeuralLayers nn({32, 32});
+
+    // Train the model
+    nn.fit(X, y, 10000, .01, true);
+
+    // Predict the output
+    cmatrix<cbool> y_pred = nn.predict(X);
+
+    return 0;
+}
 ```
 
 ## Hierarchical Structure
