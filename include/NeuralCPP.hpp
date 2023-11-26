@@ -16,13 +16,14 @@
 #include "NeuralActivation.hpp"
 #include "NeuralLoss.hpp"
 #include "NeuralPerceptron.hpp"
+#include "NeuralLayers.hpp"
 
 #include <random>
 
 /**
  * @brief NeuralCPP is a C++ library specialized in the field of machine learning algorithms.
  */
-class NeuralCPP : public NeuralActivation, public NeuralLoss, public NeuralPerceptron
+class NeuralCPP : public NeuralActivation, public NeuralLoss, public NeuralPerceptron, public NeuralLayers
 {
 public:
     // METHODS
