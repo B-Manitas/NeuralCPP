@@ -16,7 +16,7 @@
 // ==================================================
 // METHODS
 
-std::tuple<cmatrix<float>, cmatrix<float>> NeuralCPP::create_dataset(const int &n_samples, const int &n_features, const int &n_classes, const int &random_state)
+void NeuralCPP::create_dataset(cmatrix<float> &X, cmatrix<float> &y, const int &n_samples, const int &n_features, const int &n_classes, const int &random_state)
 {
     // Check if the number of samples is valid
     if (n_samples <= 0)
@@ -31,8 +31,8 @@ std::tuple<cmatrix<float>, cmatrix<float>> NeuralCPP::create_dataset(const int &
         throw std::invalid_argument("The number of classes must be greater than 0");
 
     // Declare the dataset
-    cmatrix<float> X(n_samples, n_features, -1);
-    cmatrix<float> y(n_samples, 1, -1);
+    X = cmatrix<float>(n_features, n_samples, -1);
+    y = cmatrix<float>(1, n_samples, -1);
     float current_class = -1;
 
     // Initialize the random generator
@@ -41,7 +41,7 @@ std::tuple<cmatrix<float>, cmatrix<float>> NeuralCPP::create_dataset(const int &
     std::mt19937 generator(random_state);
 
     // Iterate over each sample and feature to randomly generate the dataset
-    for (int r = 0; r < n_samples; r++)
+    for (int c = 0; c < n_samples; c++)
     {
         // Choose a random class
         current_class = (float)(rand() % n_classes);
@@ -57,13 +57,11 @@ std::tuple<cmatrix<float>, cmatrix<float>> NeuralCPP::create_dataset(const int &
                                                      current_class + rand_upper_bound * sign_y);
 
         // Iterate over each feature
-        for (int c = 0; c < n_features; c++)
+        for (int r = 0; r < n_features; r++)
         {
-            const float sign = (c % 2) ? 1 : -1;
+            const float sign = (r % 2) ? 1 : -1;
             X.cell(r, c) = dist(generator) * sign;
-            y.cell(r, 0) = current_class;
+            y.cell(0, c) = current_class;
         }
     }
-
-    return std::make_tuple(X, y);
 }
