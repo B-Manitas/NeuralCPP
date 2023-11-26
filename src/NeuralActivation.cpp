@@ -1,6 +1,6 @@
 /**
  * @file NeuralActivation.cpp
- * @see src/NeuralActivation.hpp for definition.
+ * @see include/NeuralActivation.hpp for definition.
  * @brief The NeuralActivation class.
  *
  * This file contains the implementation of the NeuralActivation class.

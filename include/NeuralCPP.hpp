@@ -2,6 +2,7 @@
  * @defgroup NeuralCPP NeuralCPP
  * @file NeuralCPP.hpp
  * @brief NeuralCPP is a C++ library specialized in the field of machine learning algorithms.
+ * @see src/NeuralCPP.cpp for implementation.
  *
  * @author Manitas Bahri (https://github.com/B-Manitas)
  * @date 2023/11

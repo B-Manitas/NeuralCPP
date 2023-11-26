@@ -1,6 +1,6 @@
 /**
  * @file NeuralCPP.cpp
- * @see src/NeuralCPP.hpp for definition.
+ * @see include/NeuralCPP.hpp for definition.
  * @brief The NeuralCPP class.
  *
  * This file contains the implementation of the NeuralCPP class.

@@ -1,6 +1,6 @@
 /**
  * @file NeuralLoss.cpp
- * @see src/NeuralLoss.hpp for definition.
+ * @see include/NeuralLoss.hpp for definition.
  * @brief The NeuralLoss class.
  *
  * This file contains the implementation of the NeuralLoss class.

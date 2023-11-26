@@ -1,6 +1,6 @@
 /**
  * @file NeuralPerceptron.cpp
- * @see src/NeuralPerceptron.hpp for definition.
+ * @see include/NeuralPerceptron.hpp for definition.
  * @brief The NeuralPerceptron class.
  *
  * This file contains the implementation of the NeuralPerceptron class.
